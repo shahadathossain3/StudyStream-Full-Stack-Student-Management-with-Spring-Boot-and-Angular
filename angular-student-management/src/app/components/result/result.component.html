@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exam" class="form-label">Exam</label>
+            <select id="exam" class="form-control" name="exam" [(ngModel)]="examination.id">
+              <option *ngFor="let exam of examList" [value]="exam.id">{{ exam.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="subjects" class="form-label">Subjects</label>
+            <select id="subjects" class="form-control" name="subjects" [(ngModel)]="subjects.id" (change)="selectedSubject()">
+              <option *ngFor="let subject of subjectsList" [value]="subject.id">{{ subject.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="studentsList">
+        <div class="col-md-9 center-content">
+          <h3 class="text-center">Student List</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Marks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let result of resultList; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{result.students?.firstName}} {{result.students?.lastName}}</td>
+              <td>{{result.students?.studentID}}</td>
+              <td><input type="text" class="form-control" [(ngModel)]="result.marks"></td>
+<!--              <td>{{result.marks}}</td>-->
+            </tr>
+            </tbody>
+          </table>
+          <button (click)="addResult()" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+          <h2>ADD Enrollment</h2>
+          <div class="card w-75">
+            <div class="card-header bg-secondary text-white">
+              ADD Enrollment
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+
+                  <div *ngIf="studentsList">
+
+
+                    <div class="mb-3">
+                      <label for="students" class="form-label">Student</label>
+                      <select id="students" class="form-control" name="students" [(ngModel)]="students.id">
+                        <option *ngFor="let student of studentsList" [value]="student.id">{{student.studentID}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div *ngIf="teachersList">
+
+                    <div class="mb-3">
+                      <label for="teachers" class="form-label">Teacher</label>
+                      <select id="teachers" class="form-control" name="teachers" [(ngModel)]="teachers.id">
+                        <option *ngFor="let teacher of teachersList" [value]="teacher.id">{{ teacher.teacherID }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="subjects" class="form-label">Section</label>
+                      <select id="subjects" class="form-control" name="subjects" [(ngModel)]="sections.id">
+                        <option *ngFor="let section of sectionsList" [value]="section.id">{{ section.name }}</option>
+                      </select>
+                      <!--                      <input type="text" class="form-control" id="day" name="day" [(ngModel)]="sections.day">-->
+                    </div>
+                  </div>
+
+                </div>
+                <button (click)="addEnrollment()" class="btn btn-primary">Submit</button>
+                <!--            <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>-->
+                <!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+                <!--              Loading...-->
+                <!--            </button>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+

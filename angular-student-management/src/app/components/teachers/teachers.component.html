@@ -1,0 +1,169 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="isTeachersAdd">
+        <div class="col-md-9 center-content">
+          <h2>ADD Teachers</h2>
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              ADD Teachers
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="firstName" class="form-label">First Name</label>
+                      <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="teachers.firstName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="lastName" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="teachers.lastName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="fatherName" class="form-label">Father Name</label>
+                      <input type="text" class="form-control" id="fatherName" name="fatherName" [(ngModel)]="teachers.fatherName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="motherName" class="form-label">Mother Name</label>
+                      <input type="text" class="form-control" id="motherName" name="motherName" [(ngModel)]="teachers.motherName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="teacherID" class="form-label">Teacher ID</label>
+                      <input type="text" class="form-control" id="teacherID" name="teacherID" [(ngModel)]="teachers.teacherID">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="teachers.password">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                      <input type="Date" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="teachers.dateOfBirth">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="gender" class="form-label">Gender</label>
+                      <select id="gender" class="form-control" name="gender" [(ngModel)]="teachers.gender">
+                        <option  value="male">Male</option>
+                        <option  value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="address" name="address" [(ngModel)]="teachers.address">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="teachers.phone">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="dateOfJoin" class="form-label">Date Of Join</label>
+                      <input type="Date" class="form-control" id="dateOfJoin" name="dateOfJoin" [(ngModel)]="teachers.dateOfJoin">
+                    </div>
+                  </div>
+
+
+                </div>
+                <button (click)="addTeachers()" class="btn btn-primary">Submit</button>
+                <!--            <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>-->
+                <!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+                <!--              Loading...-->
+                <!--            </button>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isTeachersList">
+        <div class="col-md-9 center-content">
+          <h3 class="text-center">Teacher List</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Teacher ID</th>
+              <th scope="col">Mobile</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let teacher of teachersList; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{teacher.firstName}} {{teacher.lastName}}</td>
+              <td>{{teacher.teacherID}}</td>
+              <td>{{teacher.phone}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="isSection">
+        <div class="col-md-4">
+          <form class="form-inline">
+            <div class="form-group mb-2">
+              <label for="sections" class="form-label">Class Routine</label>
+              <input type="text" class="form-control" id="sections" placeholder="Teacher ID" name="sections" [(ngModel)]="teachersId">
+            </div>
+            <button type="submit" (click)="getTeacherWithSection()" class="btn btn-primary mb-2">Submit</button>
+          </form>
+        </div>
+
+        <table *ngIf="sectionList" class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Section Name</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Time</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Subject Code</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let section of sectionList; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{section.name}}</td>
+            <td>{{section.classroom?.roomNumber}}</td>
+            <td>{{section.time}}</td>
+            <td>{{section.subjects?.name}}</td>
+            <td>{{section.subjects?.code}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

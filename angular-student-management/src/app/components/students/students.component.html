@@ -1,0 +1,223 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="isStudentsAdd">
+        <div class="col-md-9 center-content">
+          <h2>ADD Student</h2>
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              ADD Student
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="firstName" class="form-label">First Name</label>
+                      <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="students.firstName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="lastName" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="students.lastName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="fatherName" class="form-label">Father Name</label>
+                      <input type="text" class="form-control" id="fatherName" name="fatherName" [(ngModel)]="students.fatherName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="motherName" class="form-label">Mother Name</label>
+                      <input type="text" class="form-control" id="motherName" name="motherName" [(ngModel)]="students.motherName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="studentID" class="form-label">Student ID</label>
+                      <input type="text" class="form-control" id="studentID" name="studentID" [(ngModel)]="students.studentID">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="students.password">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                      <input type="Date" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="students.dateOfBirth">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="gender" class="form-label">Gender</label>
+                      <select id="gender" class="form-control" name="gender" [(ngModel)]="students.gender">
+                        <option  value="male">Male</option>
+                        <option  value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="address" name="address" [(ngModel)]="students.address">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="students.phone">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="dateOfJoin" class="form-label">Date Of Join</label>
+                      <input type="Date" class="form-control" id="dateOfJoin" name="dateOfJoin" [(ngModel)]="students.dateOfJoin">
+                    </div>
+                  </div>
+
+
+                </div>
+                <button (click)="addStudents()" class="btn btn-primary">Submit</button>
+                <!--            <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>-->
+                <!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+                <!--              Loading...-->
+                <!--            </button>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isStudentsList">
+        <div class="col-md-9 center-content">
+          <h3 class="text-center">Student List</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Mobile</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of studentsList; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{student.firstName}} {{student.lastName}}</td>
+              <td>{{student.studentID}}</td>
+              <td>{{student.phone}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="isSection">
+        <div class="col-md-4">
+          <form class="form-inline">
+            <div class="form-group mb-2">
+              <label for="sections" class="form-label">Class Routine</label>
+              <input type="text" class="form-control" id="sections" placeholder="Student ID" name="sections" [(ngModel)]="studentId">
+            </div>
+            <button type="submit" (click)="getStudentWithSection()" class="btn btn-primary mb-2">Submit</button>
+          </form>
+        </div>
+
+        <table *ngIf="sectionList" class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Section Name</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Time</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Subject Code</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let section of sectionList; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{section.name}}</td>
+            <td>{{section.classroom?.roomNumber}}</td>
+            <td>{{section.time}}</td>
+            <td>{{section.subjects?.name}}</td>
+            <td>{{section.subjects?.code}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="isExamList">
+        <div class="col-md-4">
+          <form class="form-inline">
+            <div class="form-group mb-2">
+              <label for="exam" class="form-label">Exam Routine</label>
+              <input type="text" class="form-control" placeholder="Student ID" id="exam" name="exam" [(ngModel)]="studentId">
+            </div>
+            <button type="submit" (click)="getExamList()" class="btn btn-primary mb-2">Submit</button>
+          </form>
+        </div>
+
+        <table *ngIf="examinationsList" class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Time</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Subject Code</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let examination of examinationsList; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{examination.classroom?.roomNumber}}</td>
+            <td>{{examination.time}}</td>
+            <td>{{examination.subjects?.name}}</td>
+            <td>{{examination.subjects?.code}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="isResultList">
+        <table *ngIf="resultList" class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Subject Code</th>
+            <th scope="col">Marks</th>
+            <th scope="col">Exam Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let result of resultList; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{result.subjects?.name}}</td>
+            <td>{{result.subjects?.code}}</td>
+            <td>{{result.marks}}</td>
+            <td>{{result.examination?.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

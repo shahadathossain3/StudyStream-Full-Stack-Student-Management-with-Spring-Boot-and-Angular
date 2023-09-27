@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="isSubjectsAdd">
+        <div class="col-md-9 center-content">
+          <h2>ADD Subject</h2>
+          <div class="card w-75">
+            <div class="card-header bg-secondary text-white">
+              ADD Subject
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="subjects.name">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="code" class="form-label">Code</label>
+                      <input type="text" class="form-control" id="code" name="code" [(ngModel)]="subjects.code">
+                    </div>
+                  </div>
+                </div>
+                <button (click)="addSubjects()" class="btn btn-primary">Submit</button>
+                <!--            <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>-->
+                <!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+                <!--              Loading...-->
+                <!--            </button>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isSubjectsList">
+        <div class="col-md-9 center-content">
+          <h3 class="text-center">Subject List</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let subject of subjectsList; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{subject.name}}</td>
+              <td>{{subject.code}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

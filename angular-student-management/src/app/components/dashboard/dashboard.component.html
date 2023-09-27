@@ -1,0 +1,171 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+
+        <div *ngIf="isAdmin">
+          <div class="row">
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/classroom/add-classroom']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Classroom Number</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/subjects/add-subjects']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Subjects</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/subjects/subjects-list']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Subjects List</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/sections/add-sections']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Section</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/sections/sections-list']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Section List</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/students/add-students']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Student</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/students/students-list']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Student List</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/teachers/add-teachers']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Teacher</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/teachers/teachers-list']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Teacher List</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/enrollments/add-enrollments-students']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Student Course Enrollment</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/enrollments/add-enrollments-teachers']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Teacher Course Enrollment</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/examination/add-examination']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Exam Date</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        </div>
+
+        <div *ngIf="isTeacher">
+          <div class="row">
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/result/add-result']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ADD Result</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+            <div class="col-md-6 mt-3">
+              <a [routerLink]="['/teachers/attendance']" class="text-decoration-none">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Attendance</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isStudent">
+          <div class="row">
+          <div class="col-md-6 mt-3">
+            <a [routerLink]="['/students/result-list']" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Result</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

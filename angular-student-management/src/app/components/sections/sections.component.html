@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="isSectionsAdd">
+        <div class="col-md-9 center-content">
+          <h2>ADD Section</h2>
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              ADD Section
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="sections.name">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="mb-3">
+                      <label for="day" class="form-label">Day</label>
+                      <select id="day" class="form-control" name="day" [(ngModel)]="sections.day">
+                        <option *ngFor="let day of dayOfWeekList" [value]="day">{{ day }}</option>
+                      </select>
+<!--                      <input type="text" class="form-control" id="day" name="day" [(ngModel)]="sections.day">-->
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="mb-3">
+                      <label for="time" class="form-label">Name</label>
+                      <input type="time" class="form-control" id="time" name="time" [(ngModel)]="sections.time">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="subjects" class="form-label">Subjects</label>
+                      <select id="subjects" class="form-control" name="subjects" [(ngModel)]="subjects.id">
+                        <option *ngFor="let subjects of subjectsList" [value]="subjects.id">{{ subjects.name }}</option>
+                      </select>
+                      <!--                      <input type="text" class="form-control" id="day" name="day" [(ngModel)]="sections.day">-->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="classroom" class="form-label">Classroom</label>
+                      <select id="classroom" class="form-control" name="classroom" [(ngModel)]="classroom.id">
+                        <option *ngFor="let classroom of classroomList" [value]="classroom.id">{{ classroom.roomNumber }}</option>
+                      </select>
+                      <!--                      <input type="text" class="form-control" id="day" name="day" [(ngModel)]="sections.day">-->
+                    </div>
+                  </div>
+                </div>
+                <button (click)="addSection()" class="btn btn-primary">Submit</button>
+                <!--            <button *ngIf="isLoading" class="btn btn-primary" type="button" disabled>-->
+                <!--              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>-->
+                <!--              Loading...-->
+                <!--            </button>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isSectionsList">
+        <div class="col-md-9 center-content">
+          <h3 class="text-center">Section List</h3>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Classroom</th>
+              <th scope="col">Day</th>
+              <th scope="col">Time</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Subject Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let section of sectionsList; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{section.classroom?.roomNumber}}</td>
+              <td>{{section.day}}</td>
+              <td>{{section.time}}</td>
+              <td>{{section.subjects?.name}}</td>
+              <td>{{section.subjects?.code}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
